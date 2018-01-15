@@ -1,0 +1,48 @@
+        TRAVAIL DEMANDE
+        ===============
+        Ecrire une application de gestion de présence qui devra:
+calculer et afficher le taux de fréquentation d'un étudiant à un cours 
+calculer et afficher les taux de fréquentation d'un étudiant à tous ses cours
+calculer et afficher les taux de fréquentation des étudiants à un cours donné
+
+afficher la liste des étudiant dont le taux de fréquentation à un cours est supérieur ou égal à 25%
+offrir à son utilisateur la possibilité de compléter les présences grâce à une commande dans laquelle il indiquera:
+    - l'acronyme du cours
+    - la date
+    - le(s) matricule(s) de(s) étudiant(s)
+    - 'P' pour dire Présence et 'A' pour dire Absent
+    - l'adresse de la machine contenant la base de données (fichier des présences)
+    NB. cette commande pourrait être saisie en local ou à distance
+
+    L'application devra enfin permettre à son utilisateur de faire une importation de présence depuis
+    un fichier excel.csv connaissant son chemin d'accès, sachant qu'il devra indiquer la colonne des matricule et celle des présence
+
+================================================================================================
+
+nous savons créer un fichier avec ses dossiers parents si besoin, selon que le path l'indiquera
+
+ce qui nous a permis de mettre sur pied la structure de base en terme d'organisation des fichiers
+qui contiendront les données de l'application
+
+et ces fichiers et dossiers de base sont générés automatiquement lors de l'initialisation de l'application
+
+nous savons lire et traiter le données d'un fichier si celui-ci est au format (csv)
+    EX:
+        16KN181,KISHIMBA,NGOY,Jean-Felix,M
+        16KM184,KISIMBA,MUTIKAMBA,Ray,M
+        16KM185,KISUMPA,MOLYA,Chance,M
+    ou:
+        16KN181;KISHIMBA;NGOY;Jean-Felix;M
+        16KM184;KISIMBA;MUTIKAMBA;Ray;M
+        16KM185;KISUMPA;MOLYA;Chance;M
+
+    Une fois les données lues du fichier, une liste associée est renvoyée et 
+    grâce à cette avancée nous savons obtenir la liste des étudiant ou des cours en une ligne de code
+
+nous avons réussi à marquer la présence d'unn seul étudiant et suggérer à l'utilisateur de 
+poursuivre l'opération sur d'autre étudiant et
+nous avons aussi réussi à importer les présence effectuer en excel.csv vers l'application 
+
+plus qu'à affichier now les taux de fréquentation
+
+analyse de la commande permettant de compléter la présence
