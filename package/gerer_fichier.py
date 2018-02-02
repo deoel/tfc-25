@@ -28,7 +28,7 @@ def creer_dossier_puis_fichier(chemin):
         return False
 
 # le paramètre chemin est de la forme: presence/G1/py/
-def get_contenu_dossier(dossier):
+def get_contenu_dossier(dossier,see_error=False):
     """ la fonction dois trouver tous les fichiers qu'il y a dans le dossier py, 
     sous dossiers du dossier py et le renvoyer dans une liste """
     if(dossier[-1]=='/'):           #si le dernier caractère du chemin du dossier indiqué en paramètre
@@ -42,7 +42,8 @@ def get_contenu_dossier(dossier):
                 L_contenu.extend(cont_s_doc)            #et on étend avec la liste prinicpale
             else:                                       #sinon il s'agit alors d'un fichier et dans cas
                 L_contenu.append(chemin)                #on l'ajout simplement à la liste princial
-    
+    elif see_error:
+        print("Dossier inexistant!")
     return L_contenu                                    # et après avoir tout récupérer on retourne la liste
 
 

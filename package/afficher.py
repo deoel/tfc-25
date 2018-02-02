@@ -2,6 +2,7 @@
 from package.config import *
 from package.lire_donnees import *
 from package.autres  import *
+from package.client  import *
 
 def afficher_presence(cmd):
     acro = cmd[0]   #acronyme indiqué dans la commande
@@ -12,6 +13,9 @@ def afficher_presence(cmd):
     if len(cmd)>2 and cmd[2]!="":
         mats = (cmd[2]).split(',')
 
+    if len(cmd)>3 and cmd[3]!="":               #dans cette case on y attend logiquement l'adresse distante
+        demande_de_liste_depresence(cmd[:-1],cmd[-1])
+        return True
 
     chemin_cours = get_chemin_fichier_cours()   #on demande le chemin qui mène au fichier des cours
     liste_cours = generer_liste(chemin_cours)   #on génère la liste des cours en lisant le fichier
@@ -55,7 +59,6 @@ def afficher_presence_date(chemin_pres,date,cours,mats):
                 print(text)
             else:
                 pass
-    
 
 def afficher_presence_cours(dossier,cours,mats):
     fichiers_pres = get_contenu_dossier(dossier)#on récupère tous les fichiers de présence du dossier
@@ -87,3 +90,9 @@ def afficher_presence_cours(dossier,cours,mats):
             else:
                 pass
     
+def demande_de_liste_depresence(cmd,adrs):
+    ip_server = adrs
+    port    = 1111
+    o = ClientThread(ip_server,port)
+    o.envoyer_requete(" ".join(cmd))
+    o.start()

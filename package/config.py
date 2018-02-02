@@ -24,6 +24,8 @@ def creer_fichiers_de_base():
     creer_dossier_puis_fichier(get_chemin_fichier_cours())
     creer_dossier_puis_fichier(get_chemin_dossier_presence())
 
+    creer_dossier("rep_serveur")
+
 # la fonction importe la liste des étudiants et des cours se trouvant dans les fichiers .csv vers nos fichier .txt
 def importer_donnee_source(fichier_source_etudiant,fichier_source_cours):
     #importer la liste des étudiants qui sont le fichier .csv vers notre fichier .txt

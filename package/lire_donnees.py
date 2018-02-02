@@ -1,3 +1,4 @@
+from package.config import *
 
 def generer_liste(path):
     """la fonction génère une lite à partir des données lues dans un fichier dont le chemin est reçu en paramètre """
@@ -41,3 +42,16 @@ def element_exist( liste,cle,indice):
         #print("Indice de recherche incorrect!")
         pass
     return False
+
+def trouver_cours_si_acro_est(acro,return_list=False,message_si_no_exist="Erreur: acronyme incorrect!"):
+    chemin_cours = get_chemin_fichier_cours()   #on demande le chemin qui mène au fichier des cours
+    liste_cours = generer_liste(chemin_cours)   #on génère la liste des cours en lisant le fichier
+    cours = element_exist( liste_cours,acro,0)  #on cherche dans la liste, le cours dont l'acronyme est celui indiqué dans la commande
+    
+    if cours == False:                          #si on a False dans cours, c'est qu'aucun cours ne porte l'acronyme indiqué dans la commande
+        if message_si_no_exist:
+            print(message_si_no_exist)          #alos on affiche le message d'erreur 
+        return False                            #et on qui la fonction
+    if return_list:
+        return {"cr":cours,"list":liste_cours}
+    return cours

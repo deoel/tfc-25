@@ -115,5 +115,24 @@ def importer_presence(cmd,sep=","):
         return False
     print("Importation Présence effectuée au cours de :",cours[1])
 
+def presence_aleatoire(cmd):
+    acro = cmd[0]   #acronyme indiqué dans la commande
+    date = cmd[1]
+
+    cours = trouver_cours_si_acro_est(acro)     #on recherche le cours dans le fichier à partir de l'acronyme
+    if not cours:
+        return False                            #si le cours n'existe pas on retourne False
+
+    dossier = get_chemin_dossier_presence() + acro #le chemin qui conduit vers le dossier qui contient les fichiers de présence au cours
+    chemin = dossier+'/'+date+'.txt'
+    
+    if not dossier_existe(dossier):             #si le dossier devant contenir les présence du cours n'existe pas
+        creer_dossier(dossier)                  #alors on le crée
+
+    ch = get_chemin_fichier_etudiant()
+    liste_etus = generer_liste(ch)
+    faire_presence_aleratoire(chemin,liste_etus)
+    print("Présence du",date,"au cours de :",cours[1],"[Aléatoire]")
+    
 def rediriger_cmd(adrs,cmd):
     pass
